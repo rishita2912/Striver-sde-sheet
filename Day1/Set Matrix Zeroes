@@ -1,1 +1,34 @@
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix)
+  {
+    int row = matrix.size(), cols = matrix[0].size();
+    vector<int> dummy1(rows,-1), dummy2(cols, -1);
+    for(int i = 0;i<rows;i++)
+    {
+      for(int j = 0;j<cols;j++)
+         if(matrix[i][j]==0)
+          {
+           dummy1[i] = 0;
+           dummy2[j] = 0;
+        }
+     }
+}
+for(int i = 0; i<rows;i++)
+{
+  for(int j = 0;j<cols;j++)
+    {
+      if(dummy1[i] == 0 || dummy2[j] == 0)
+      {
+        matrix[i][j] = 0;
+   }
+}
+}
+};
+dummy1 (size row) is used to track which rows should be set to 0.
+dummy2 (size cols) is used to track which columns should be set to 0.
+Both arrays are initialized with -1, meaning no row/column is marked for zeroing initially.
+
+
+f either dummy1[i] == 0 (row should be zeroed) or dummy2[j] == 0 (column should be zeroed), it sets matrix[i][j] = 0.
 
