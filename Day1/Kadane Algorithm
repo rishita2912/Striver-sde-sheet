@@ -1,0 +1,45 @@
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int n = nums.size();
+        int ans = INT_MIN;
+        int currSum = 0;
+        for(int i = 0; i<n; i++) // Start of subarray
+        {
+            for(int j = i; j<n; j++) // End of subarray
+            {
+                currSum += nums[j]; // Compute sum of current subarray
+                ans = max(ans, currSum); // Update maximum sum
+            }
+        }
+        return ans;
+    }
+};
+
+Optimized approach:
+
+class Solution{
+    public:
+        int maxSubArray(vector<int>& nums)
+        {
+            int maxSum = INT_MIN; // Stores maximum subarray sum
+            int currentSum = 0;    // Stores current subarray sum
+            
+            for(int i = 0; i < nums.size(); i++)
+            {
+                currentSum += nums[i]; // Add current element
+                
+                if(currentSum > maxSum)
+                {
+                    maxSum = currentSum; // Update maxSum if current sum is greater
+                }
+
+                if(currentSum < 0)
+                {
+                    currentSum = 0; // Reset sum if it goes negative
+                }
+            }
+            return maxSum;
+        }
+};
+
